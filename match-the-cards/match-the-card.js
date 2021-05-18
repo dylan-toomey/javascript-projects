@@ -31,7 +31,7 @@ dealCards();
 function dealCards() {
     shuffle(cardArray);
     for (i=0; i < cardArray.length; i++) {
-        hiddenCards[i].src = "../images/" + cardArray[i] + ".png";
+        hiddenCards[i].src = "images/" + cardArray[i] + ".png";
     }
     return
 } 
