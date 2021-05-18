@@ -23,8 +23,8 @@ let cardArray = [
 
 let hiddenCards = document.getElementsByClassName("cardvalue");
 let cards = document.querySelectorAll(".cardselector");
-let targetReveal
-let targetBlank
+let targetReveal;
+let targetBlank;
 
 dealCards();
 
@@ -46,22 +46,25 @@ function shuffle(cardArray) {
       cardArray[randomIndex] = temporaryValue;
     }
     return cardArray;
-  }
+}
 
-  cards.forEach(card => card.addEventListener('click', flipCard));
+cards.forEach(card => card.addEventListener('click', flipCard));
 
-  function flipCard() {
-      this.classList.toggle('flip');
-      var targetReveal = this.getElementsByClassName('cardvalue')
-      var targetBlank = this.getElementsByClassName('card')
-      var flipped = document.getElementsByClassName('flip');
-      targetReveal[0].classList.toggle('reveal')
-      targetBlank[0].classList.toggle('hide')
-      if (flipped.length == 2) {
-          setTimeout(checkMatch, 1000)
-      }
-      else return
-  }
+function flipCard() {
+    var targetReveal = this.getElementsByClassName('cardvalue');
+    var targetBlank = this.getElementsByClassName('card');
+    var flipped = document.getElementsByClassName('flip');
+    if (flipped.length < 2 && this.className === 'cardselector') {
+        console.log(this.className);
+        this.classList.toggle('flip');
+        targetReveal[0].classList.toggle('reveal');
+        targetBlank[0].classList.toggle('hide');
+    }
+    if (flipped.length == 2) {
+        setTimeout(checkMatch, 1000);
+    }
+    else return;
+}
 
 
 function checkMatch() {
@@ -77,17 +80,17 @@ function checkMatch() {
         flipped[1].classList.remove('flip');
         flipped[0].classList.remove('flip');
         console.log('Thats a match');
-        console.log(matched.length)
+        console.log(matched.length);
     }
     else if (image0[0].src != image1[0].src) {
-        image1[0].classList.toggle('reveal')
-        imageBlank1[0].classList.toggle('hide')
-        image0[0].classList.toggle('reveal')
-        imageBlank0[0].classList.toggle('hide')
-        setTimeout(console.log("That's not a Match!!!!"), 9000);
+        image1[0].classList.toggle('reveal');
+        imageBlank1[0].classList.toggle('hide');
+        image0[0].classList.toggle('reveal');
+        imageBlank0[0].classList.toggle('hide');
+        console.log("That's not a Match!!!!");
         flipped[1].classList.toggle('flip');
         flipped[0].classList.toggle('flip');
-        console.log(matched.length)
+        console.log(matched.length);
     }
     if (matched.length == 20) {
         alert("You matched them all!!!");
