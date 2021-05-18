@@ -1,0 +1,66 @@
+
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+    perspective: 1000px;
+  }
+
+  #container div {
+    font-weight: bold;
+    font-size: 3rem;
+    width: 17%;
+    height: 180px;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+      width: auto;
+      height: 180px;
+  }
+
+.cardvalue {
+    display: none;
+}
+.cardselector {
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+.flip {
+    transform: rotateY(180deg)
+}
+
+.hide {
+    transition: transform .5s;
+    display: none;
+}
+
+.reveal {
+    display: block;
+    width: auto;
+    height: 180px;
+    transform: scaleX(-1);
+}
+
+.matched {
+    transform: scaleX(-1);
+    transition: transform 0s;
+}
+
+.matched .reveal {
+    border: 5px solid green;
+    border-radius: 25px;
+}
+
+.flip {
+    display: none;
+}
