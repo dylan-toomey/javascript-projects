@@ -4,17 +4,14 @@
     display: flex;
     flex-wrap: wrap;
     border: 3px solid black;
+    width: 700px;
     border-radius: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: auto;
     justify-content: center;
     perspective: 1000px;
   }
 
   #container div {
-    font-weight: bold;
-    font-size: 3rem;
-    width: 17%;
     height: 180px;
     margin: 3px;
     display: flex;
@@ -22,10 +19,14 @@
     justify-content: center;
   }
 
-  .card {
+.cardselector img {
       width: auto;
       height: 180px;
   }
+
+.matched img {
+    opacity: 0.5;
+}
 
 .cardvalue {
     display: none;
@@ -33,6 +34,7 @@
 .cardselector {
     transform-style: preserve-3d;
     transition: transform .5s;
+    margin-top: 15px;
 }
 
 .flip {
@@ -56,11 +58,10 @@
     transition: transform 0s;
 }
 
-.matched .reveal {
-    border: 5px solid green;
-    border-radius: 25px;
-}
-
 .flip {
     display: none;
+}
+
+#title {
+    text-align: center;
 }

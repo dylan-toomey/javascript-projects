@@ -1,25 +1,4 @@
-let cardArray = [
-    "10H",
-    "10S",
-    "AH",
-    "AS",
-    "KH",
-    "KS",
-    "QH",
-    "QS",
-    "JH",
-    "JS",
-    "10H",
-    "10S",
-    "AH",
-    "AS",
-    "KH",
-    "KS",
-    "QH",
-    "QS",
-    "JH",
-    "JS"
-]
+let cardArray = ["10H","10S","AH","AS","KH","KS","QH","QS","JH","JS","10H","10S","AH","AS","KH","KS","QH","QS","JH","JS"]
 
 let hiddenCards = document.getElementsByClassName("cardvalue");
 let cards = document.querySelectorAll(".cardselector");
@@ -74,15 +53,13 @@ function checkMatch() {
     var imageBlank0 = flipped[0].getElementsByClassName('card')
     var imageBlank1 = flipped[1].getElementsByClassName('card')
     var matched = document.getElementsByClassName('matched');
-    if (image0[0].src == image1[0].src) {
-        flipped[1].classList.add('matched');
-        flipped[0].classList.add('matched');
-        flipped[1].classList.remove('flip');
-        flipped[0].classList.remove('flip');
-        console.log('Thats a match');
-        console.log(matched.length);
+    for (i=1; i > -1; i--) {
+        if (image0[0].src == image1[0].src) {
+            flipped[i].classList.add('matched');
+            flipped[i].classList.remove('flip');
+        }
     }
-    else if (image0[0].src != image1[0].src) {
+    if (image0[0].src != image1[0].src) {
         image1[0].classList.toggle('reveal');
         imageBlank1[0].classList.toggle('hide');
         image0[0].classList.toggle('reveal');
