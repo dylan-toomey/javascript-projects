@@ -4,6 +4,8 @@ let hiddenCards = document.getElementsByClassName("cardvalue");
 let cards = document.querySelectorAll(".cardselector");
 let targetReveal;
 let targetBlank;
+var matches;
+let scorematch = document.getElementById("matches")
 
 dealCards();
 
@@ -48,8 +50,8 @@ function flipCard() {
 
 function checkMatch() {
     var flipped = document.getElementsByClassName('flip');
-    var image0 = flipped[0].getElementsByClassName('reveal')
     var image1 = flipped[1].getElementsByClassName('reveal')
+    var image0 = flipped[0].getElementsByClassName('reveal')
     var imageBlank0 = flipped[0].getElementsByClassName('card')
     var imageBlank1 = flipped[1].getElementsByClassName('card')
     var matched = document.getElementsByClassName('matched');
@@ -57,6 +59,13 @@ function checkMatch() {
         if (image0[0].src == image1[0].src) {
             flipped[i].classList.add('matched');
             flipped[i].classList.remove('flip');
+            matches = matched.length;
+            scorematch.innerHTML = parseInt(matches/2) + "/10 Matches"
+            if (matched.length == 20) {
+                scorematch.innerHTML = "10/10 Matches YOU WON!!!!"
+                scorematch.style.fontWeight = "bold"
+                scorematch.style.fontSize = "20px"
+            }
         }
     }
     if (image0[0].src != image1[0].src) {
@@ -67,11 +76,6 @@ function checkMatch() {
         console.log("That's not a Match!!!!");
         flipped[1].classList.toggle('flip');
         flipped[0].classList.toggle('flip');
-        console.log(matched.length);
-    }
-    if (matched.length == 20) {
-        alert("You matched them all!!!");
     }
     else return
 }
-
